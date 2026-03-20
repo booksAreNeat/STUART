@@ -1,0 +1,126 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: rgb(255, 220, 201);
+    color: rgb(156, 85, 47);
+}
+
+
+/* HEADER */
+
+header{
+    background-color: rgb(156, 85, 47);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:4px;
+    color: rgb(255, 234, 71);
+}
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav a{
+    text-decoration:none;
+    color:rgb(255, 234, 71);
+    font-weight:bold;
+}
+
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:600px;
+    margin:auto;
+    margin-bottom:30px;
+}
+
+
+/* BUTTON */
+
+.cta-button{
+    background-color: rgb(255, 234, 71);
+    color: rgb(156, 85, 47);
+    padding:12px 30px;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.cta-button:hover{
+    background-color: rgb(255, 234, 71);
+}
+
+
+/* FEATURES */
+
+.features{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.feature-grid{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:40px;
+}
+
+.feature{
+    background:white;
+    padding:25px;
+    width:250px;
+    border-radius:10px;
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+
+/* FOOTER */
+
+footer{
+    background-color: rgb(156, 85, 47);
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
