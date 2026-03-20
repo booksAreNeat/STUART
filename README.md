@@ -1,7 +1,10 @@
 # STUART
 CM3141 Pirate Studies
 
-Commit Guides
+## Team Members
+Abigail Smith 2300900, Stuart Philpot 2309914, Calla Aitken 2319673, Kate Leggott 2208628, Jordan Noble 2507055
+
+## Commit Guides
 
 docs: Documentation only changes
 
