@@ -63,3 +63,7 @@ footer {
     background: #ed864e;
     color: white;
 }
+
+.hidden {
+    display: none;
+}
