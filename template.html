@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>STUART - Prescription Tracking Made Easy</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -11,8 +12,13 @@
 <header>
   <h1>STUART</h1>
   <p>Smarter prescription tracking for everyone.</p>
-  <a href="#" class="btn">Get Started</a>
+  <a href="#" class="btn" onclick="options()">Get Started</a>
 </header>
+
+<div id="optionButtons" class="hidden">
+  <button href="patient.html">Patient</button>
+  <button>Prescriber</button>
+</div>
 
 <section>
   <h2>Why Choose STUART?</h2>
