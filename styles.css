@@ -1,8 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f4f8fb;
     color: #333;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -52,9 +59,10 @@ section {
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.card h3 {
+.card h3, summary {
     margin-top: 0;
     color: #ed864e;
+    font-weight: bold;
 }
 
 footer {
@@ -62,6 +70,10 @@ footer {
     padding: 30px;
     background: #ed864e;
     color: white;
+}
+
+section {
+    flex: 1; 
 }
 
 .hidden {
