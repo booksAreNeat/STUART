@@ -6,15 +6,15 @@ html, body {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f4f8fb;
+    background: #ed864e;
     color: #333;
     display: flex;
     flex-direction: column;
 }
 
 header {
-    background: #ed864e;
-    color: white;
+    background: #FFDDC9;
+    color: #ed864e;
     padding: 60px 20px;
     text-align: center;
 }
@@ -68,8 +68,8 @@ section {
 footer {
     text-align: center;
     padding: 30px;
-    background: #ed864e;
-    color: white;
+    background: #FFDDC9;
+    color: #ed864e;
 }
 
 section {
@@ -78,4 +78,28 @@ section {
 
 .hidden {
     display: none;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+.logo {
+    width: 250px;
+    height: 100px;
+}
+
+.header_img {
+    width: 150px;
+    height: 150px;
+}
+
+.footer_img {
+    width: 50px;
+    height: 50px;
 }
