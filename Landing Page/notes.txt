@@ -1,0 +1,14 @@
+FFEA47 - rgb(255 234 71) 
+FFDCC9 - rgb(255 220 201)
+9C552F - rgb(156 85 47)
+
+ rgb(255 234 71) 
+ rgb(255 220 201)
+ rgb(156 85 47)
+
+
+Home Page
+Register
+Map
+
+Landing Page

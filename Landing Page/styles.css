@@ -1,0 +1,309 @@
+:root {
+    --yellow: rgb(255, 234, 71);
+    --cream: rgb(255, 220, 201);
+    --brown: rgb(156, 85, 47);
+    --light-grey: #e9e9e9;
+    --text-dark: #111111;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--light-grey);
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0;
+}
+
+/* HEADER */
+header {
+    background-color: var(--brown);
+    padding: 30px 20px;
+}
+
+.logo {
+    width: 260px;
+    max-width: 90%;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    color: var(--yellow);
+    font-size: 1.2rem;
+}
+
+/* MAIN CONTENT */
+.content {
+    padding: 40px 20px 50px;
+}
+
+.carousel-section {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    padding: 10px;
+}
+
+.slide-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: var(--yellow);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 30px;
+    min-height: 500px;
+}
+
+/* IMAGE AREA */
+.slide-image {
+    width: 45%;
+    min-height: 380px;
+    background-color: var(--cream);
+    border: 4px solid var(--brown);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.slide-image img {
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    display: block;
+}
+
+/* TEXT AREA */
+.slide-text {
+    width: 55%;
+    text-align: left;
+    color: var(--brown);
+}
+
+.slide-text h2 {
+    font-size: 2.3rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.slide-text p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    color: #5c3118;
+}
+
+/* FORM */
+.signup-form {
+    display: flex;
+    margin-top: 20px;
+    max-width: 420px;
+}
+
+.signup-form input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 2px solid var(--brown);
+    border-right: none;
+    background-color: var(--cream);
+    color: var(--brown);
+    font-size: 1rem;
+    outline: none;
+}
+
+.signup-form input::placeholder {
+    color: var(--brown);
+}
+
+.signup-form button {
+    padding: 12px 18px;
+    background-color: var(--brown);
+    color: var(--yellow);
+    border: 2px solid var(--brown);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-form button:hover {
+    opacity: 0.9;
+}
+
+/* NAV BUTTONS */
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--brown);
+    color: var(--yellow);
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.nav:hover {
+    opacity: 0.9;
+}
+
+/* DOTS */
+.carousel-dots {
+    margin-top: 20px;
+}
+
+.dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 6px;
+    background-color: var(--cream);
+    border: 2px solid var(--brown);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: var(--brown);
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--brown);
+    color: var(--yellow);
+    padding: 16px;
+    margin-top: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .slide-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .slide-image,
+    .slide-text {
+        width: 100%;
+    }
+
+    .slide-text {
+        text-align: center;
+    }
+
+    .signup-form {
+        margin: 20px auto 0;
+    }
+
+    .slide-text h2 {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 25px 10px 35px;
+    }
+
+    .slide-card {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .slide-image {
+        min-height: 220px;
+    }
+
+    .slide-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .slide-text p {
+        font-size: 1rem;
+    }
+
+    .signup-form {
+        flex-direction: column;
+    }
+
+    .signup-form input {
+        border-right: 2px solid var(--brown);
+        margin-bottom: 10px;
+    }
+
+    .signup-form button {
+        width: 100%;
+    }
+
+    .nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+    }
+}
+
+.sign-up {
+    background-color: var(--yellow);
+    color: var(--brown);
+    padding: 12px 22px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.sign-up-button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.sign-up-button:hover {
+    opacity: 0.9;
+    background-color: var(--brown);
+    color: var(--yellow);
+}
+
+.sign-up-b:active {
+    transform: scale(0.96);
+}
