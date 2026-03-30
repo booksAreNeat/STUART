@@ -1,0 +1,148 @@
+* {
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+  font-family: bodyfont; 
+  src: url(fonts/Aptos.ttf); 
+}
+@font-face {
+  font-family: headerfont; 
+  src: url(fonts/AllRoundGothic-Bold.ttf); 
+}
+
+body {
+    font-family: bodyfont;
+    font-size: 24px;
+    text-align: center;
+    margin: 0, 100px, 0, 100px;
+    background-color: antiquewhite;
+    
+}
+
+header {
+    background-color: #9C552F;
+    padding: 30px 20px;
+}
+
+.logo {
+    width: 400px;
+}
+
+.tagline{
+    font-family: bodyfont;
+    color: #FFEA47;
+    margin-top: 10px;
+    font-size: 15pt;
+}
+
+.title{
+    background-color: #9C552F;
+    color: #FFEA47;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.title-text{
+    font-family: headerfont;
+}
+
+.textbox{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 40%;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #FFEA47;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.section{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.register-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.small-register-section{
+    display: flex;
+    flex-direction: row;
+}
+
+.register-text{
+    
+    margin-bottom: 40px;
+}
+
+.register-image{
+    width: 40%;
+    margin-right: 20px;
+}
+
+.email-input{
+    font-size: 15px;
+    width:75%;
+    height: 30px;
+    border: 2px solid #9C552F;
+    background-color: #FFDCC9;
+    padding: 10px;
+    padding-right: 100px;  
+}
+
+.submit{
+    font-family: headerfont;
+    font-size: 15px;
+    width:20%;
+    height: 30px;
+    background-color: #9C552F;
+    color: #FFEA47;
+    border: none;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: #7a4629;
+}
+
+.input:active{
+    cursor: pointer;
+}
+
+.our-goal-text{
+    margin: 40px 20% 45px 20%;
+}
+
+.small-promise-section{
+    width: 40%;
+    padding: 2%;
+}
+
+.promise-section{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   width: 80%;
+   margin-bottom: 40px;
+}
+
+.promise-image{
+    margin-bottom: 10px;
+}
+
+
+
+
