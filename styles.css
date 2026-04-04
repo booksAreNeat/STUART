@@ -85,10 +85,6 @@ section {
     flex: 1; 
 }
 
-.hidden {
-    display: none;
-}
-
 .row {
   display: flex;
 }
@@ -223,4 +219,9 @@ section {
 @keyframes fade {
   from { opacity: .4; }
   to { opacity: 1; }
+}
+
+#loginForm {
+  display: none; /* Hidden at first */
+  margin-top: 20px;
 }

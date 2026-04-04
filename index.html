@@ -17,9 +17,22 @@
       <div class="column">
           <img src="images/S.T.U.A.R.T_LOGO.png" alt="STUART Logo" class="logo">
           <p>Welcome to the patient hub.</p>
-          <!-- Placeholder logout button - replace with actual logout functionality when backend is added -->
-          <button onclick="window.location.href='patient.html'" class="btn">Patient</button>
-          <button onclick="window.location.href='prescriber.html'" class="btn">Professional</button>
+          <button id="loginButton" class="btn" onclick="showLogin()">Login</button>
+
+          <!-- Hidden login form -->
+          <div id="loginForm">
+              <h3>=Login</h3>
+
+              <label>Name:</label>
+              <input type="text" id="nameInput"><br><br>
+
+              <label>ID:</label>
+              <input type="text" id="idInput"><br><br>
+
+              <button onclick="login()" class="btn">Submit</button>
+
+              <p id="status"></p>
+          </div>
       </div>
       <div class="column">
          <img src="images/04_Artboard_4.png" alt="Phone" class="header_img">
