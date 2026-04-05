@@ -24,7 +24,7 @@ const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4'
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
 
 let tokenClient;
 let gapiInited = false;
@@ -32,6 +32,13 @@ let gisInited = false;
 
 document.getElementById('authorize_button').style.visibility = 'hidden';
 document.getElementById('signout_button').style.visibility = 'hidden';
+document.getElementById('patient_select_title').style.visibility = 'hidden';
+document.getElementById('patient_select').style.visibility = 'hidden';
+document.getElementById('selected_patient_title').style.visibility = 'hidden';
+document.getElementById('perscription_select_title').style.visibility = 'hidden';
+document.getElementById('perscription_select').style.visibility = 'hidden';
+document.getElementById('status_select_title').style.visibility = 'hidden';
+document.getElementById('status_select').style.visibility = "hidden";
 
 /**
  * Callback after api.js is loaded.
@@ -112,60 +119,183 @@ if (token !== null) {
 }
 }
 
-/**
- * Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- * 
- * MY SPREADSHEET
- * https://docs.google.com/spreadsheets/d/11v0jMvdC-JvCrdw5JsuyMIfioxCoutvzx8yrnTRl4x4/edit?pli=1&gid=0#gid=0
- */
-//   async function listMajors() {
-//     let response;
-//     try {
-//       // Fetch first 10 files
-//       response = await gapi.client.sheets.spreadsheets.values.get({
-//         spreadsheetId: '11v0jMvdC-JvCrdw5JsuyMIfioxCoutvzx8yrnTRl4x4',
-//         range: 'Class Data!A2:E',
-//       });
-//     } catch (err) {
-//       document.getElementById('content').innerText = err.message;
-//       return;
-//     }
-//     const range = response.result;
-//     if (!range || !range.values || range.values.length == 0) {
-//       document.getElementById('content').innerText = 'No values found.';
-//       return;
-//     }
-//     // Flatten to string to display
-//     const output = range.values.reduce(
-//         (str, row) => `${str}${row[0]}, ${row[4]}\n`,
-//         'Name, Major:\n');
-//     document.getElementById('content').innerText = output;
-//   }
 
+//leftover test code from the api demo
 async function listMajors() {
-let response;
-try {
-    response = await gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: '11v0jMvdC-JvCrdw5JsuyMIfioxCoutvzx8yrnTRl4x4',
-    range: 'Sheet1!A1:Z',
-    });
-} catch (err) {
-    document.getElementById('content').innerText = err.message;
-    return;
+    let response_all;
+    try {
+        response_all = await gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '11v0jMvdC-JvCrdw5JsuyMIfioxCoutvzx8yrnTRl4x4',
+        range: 'Sheet1!A1:Z',
+        });
+    } catch (err) {
+        document.getElementById('content').innerText = err.message;
+        return;
+    }
+
+    const data = response_all.result.values;
+
+    if (!data || data.length === 0) {
+        document.getElementById('content').innerText = 'No values found.';
+        return;
+    }
+
+    // Replace undefined cells with empty string
+    const output = data
+        .map(row => row.map(cell => cell ?? '').join(' | '))
+        .join('\n');
+
+    document.getElementById('content').innerText = output;
+    }
+
+//make the patient select visible
+document.getElementById('patient_select_title').style.visibility = 'visible';
+document.getElementById('patient_select').style.visibility = 'visible';
+
+
+//much nicer way of choosing patient, perscription and status
+
+//first heres the maps 
+//map of patient sheets
+const patient_Map = {
+    PID1:   'Arlen Voss',
+    PID2:   'Mira Calder',
+    PID3:   'Theo Renshaw',
+    PID4:   'Livia Harten',
+    PID5:   'Dorian Pike',
+    PID6:   'Elara Quinn',
+    PID7:   'Rowan Keats',
+    PID8:   'Sienna Vale',
+    PID9:   'Callum Frost',
+    PID10:  'Nyla Mercer',
+    PID11:  'Jasper Wren',
+    PID12:  'Kael Thorne'
+};
+
+//map of perscription cells 
+const prescription_Map = {
+    perscription1:  'C2:G2',
+    perscription2:  'C3:G3'
+};
+
+//reusable function that can read data from google sheets within the specified range. 
+async function read_From_Sheets(range) {
+    try {
+        const response = await gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: '11v0jMvdC-JvCrdw5JsuyMIfioxCoutvzx8yrnTRl4x4',
+            range,
+        });
+        const data = response.result.values;
+
+        if (!data || data.length === 0) {
+            document.getElementById('patient_choice').innerText = 'No values found.';
+            return;
+        }
+
+        // Replace undefined cells with empty string
+        const output = data
+            .map(row => row.map(cell => cell ?? '').join(' | '))
+            .join('\n');
+
+        return output;
+
+    } catch (err) {
+        document.getElementById('patient_choice').innerText = err.message;
+        return;
+    }
+    
+    
 }
 
-const data = response.result.values;
+//function for choosing a patient
+async function select_Patient() {
+    //get the patient from the dropdown
+    const selected_Patient = document.getElementById('patient_select').value;
+    const sheet_Name = patient_Map[selected_Patient];
 
-if (!data || data.length === 0) {
-    document.getElementById('content').innerText = 'No values found.';
-    return;
+    if(!sheet_Name) return;     //returns if 
+
+    //get the data for that patient using the read method 
+    // Wrap in try/catch just in case
+    try {
+        const output = await read_From_Sheets(`${sheet_Name}!A1:Z`);
+        document.getElementById('patient_choice').innerText = output;
+    } catch (err) {
+        // This is a safeguard — should rarely happen now
+        document.getElementById('patient_choice').innerText = `Unexpected error: ${err.message}`;
+    }
+    
+    //make the perscription dropdown visible
+    document.getElementById('perscription_select_title').style.visibility = 'visible';
+    document.getElementById('perscription_select').style.visibility = 'visible';
+} 
+
+//method to choose a perscription and display it 
+async function select_Perscription() {
+    const selected_Patient = document.getElementById("patient_select").value;
+    const sheet_Name = patient_Map[selected_Patient];
+
+    const selected_Prescription = document.getElementById("perscription_select").value;
+    const range = prescription_Map[selected_Prescription];
+
+    if (!sheet_Name || !range) return;
+
+    // Load the perscription using the read sheets method
+    const output = await read_From_Sheets(`${sheet_Name}!${range}`);
+
+    document.getElementById('perscription_choice').style.visibility = 'visible';
+    document.getElementById('perscription_choice').innerText = output;
+
+    // make the select status dropdown visible
+    document.getElementById('status_select_title').style.visibility = 'visible';
+    document.getElementById('status_select').style.visibility = 'visible';
 }
 
-// Replace undefined cells with empty string
-const output = data
-    .map(row => row.map(cell => cell ?? '').join(' | '))
-    .join('\n');
 
-document.getElementById('content').innerText = output;
+//finction to update the status of a perscription
+async function select_Status() {
+    if (!gapiInited) await initializeGapiClient();
+
+    // Check for token
+    if (!gapi.client.getToken()) {
+        alert("Please authorize first!");
+        return;
+    }
+
+    const selected_Patient = document.getElementById("patient_select").value;
+    const sheet_Name = patient_Map[selected_Patient];
+    const selected_Prescription = document.getElementById("perscription_select").value;
+    const range = prescription_Map[selected_Prescription];
+    const selected_Status = document.getElementById("status_select").value;
+
+    // Basic checks
+    if (!sheet_Name || !selected_Prescription || !range || !selected_Status) return;
+
+    // Determine the row for the prescription
+    const match = range.match(/C(\d+)/);
+    const perscription_Row = match ? match[1] : null;
+    const status_Cell = `F${perscription_Row}`;
+    const new_Status = [[selected_Status]];
+
+    try {
+        await gapi.client.sheets.spreadsheets.values.update({
+            spreadsheetId: '11v0jMvdC-JvCrdw5JsuyMIfioxCoutvzx8yrnTRl4x4',
+            range: `${sheet_Name}!${status_Cell}`,
+            valueInputOption: 'RAW',
+            resource: {
+                values: new_Status,
+            },
+        });
+
+        // reload the perscription using the read sheets method
+        const patient_output = await read_From_Sheets(`${sheet_Name}!A1:Z`)
+        const perscription_output = await read_From_Sheets(`${sheet_Name}!${range}`);
+        document.getElementById('status_choice').innerText = perscription_output;
+        document.getElementById('perscription_choice').innerText = perscription_output;
+        document.getElementById('patient_choice').innerText = patient_output;
+
+    } catch (err) {
+        document.getElementById('status_select').style.border = "2px solid red";
+        console.error('Error updating status:', err);
+    }
 }
