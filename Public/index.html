@@ -1,71 +1,115 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sheets API Quickstart</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="Style/ButtonsTest.css">
-  </head>
-  <body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>STUART - Prescription Tracking Made Easy</title>
+  <link rel="stylesheet" href="stylesp.css">
+  <script src="app.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header>
+    <div class="row">
+      <div class="column">
+        <img src="images/01_Artboard_1.png" alt="Stethoscope" class="header_img">
+      </div>
+      <div class="pCcolumn">
+        <img src="images/S.T.U.A.R.T_LOGO.png" alt="STUART Logo" class="logo">
+        <p>Welcome to the prescribers hub.</p>
+        <!-- Placeholder logout button - replace with actual logout functionality when backend is added -->
+        <button onclick="window.location.href='index.html'" class="btn">Logout</button>
+      </div>
+      <div class="pColumn">
+        <img src="images/04_Artboard_4.png" alt="Phone" class="header_img">
+      </div>
+    </div>
 
 
 
-    <p>Sheets API Quickstart</p>
-
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
-
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-
-    <p id="patient_select_title">Patient Select</p>
-    <select id="patient_select" onchange="select_Patient()">
-      <option value="">--Select--</option>
-      <option value="PID1">Arlen Voss</option>
-      <option value="PID2">Mira Calder</option>
-      <option value="PID3">Theo Renshaw</option>
-      <option value="PID4">Livia Harten</option>
-      <option value="PID5">Dorian Pike</option>
-      <option value="PID6">Elara Quinn</option>
-      <option value="PID7">Rowan Keats</option>
-      <option value="PID8">Sienna Vale</option>
-      <option value="PID9">Callum Frost</option>
-      <option value="PID10">Nyla Mercer</option>
-      <option value="PID11">Jasper Wren</option>
-      <option value="PID12">Kael Thorne</option>
-    </select>
-
-    <p id="selected_patient_title">Selected Patient:</p>
-    <pre id="patient_choice" style="white-space: pre-wrap;"></pre>
-
-    <p id="perscription_select_title">Select a Perscription:</p>
-    <select id="perscription_select" onchange="select_Perscription()">
-      <option value="">---Select---</option>
-      <option value="perscription1">Perscription One</option>
-      <option value="perscription2">Perscription Two</option>
-    </select>
-
-    <pre id="perscription_choice" style="white-space: pre-wrap;"></pre>
-
-    <p id="status_select_title">Update the status of this perscription:</p>
-    <select id="status_select" onchange="select_Status()">
-      <option value="">---Select---</option>
-      <option value="Created">Created</option>
-      <option value="Sent_To_Dr">Sent To Doctor</option>
-      <option value="Recieved_From_Dr">Recieved From Doctor</option>
-      <option value="Awaiting_Payment">Awaiting Payment</option>
-      <option value="Payment_Recieved">Payment Recieved</option>
-      <option value="Handed_To_Post">Handed To Postal Service</option>
-      <option value="Recieved_By_Pharmacy">Recieved By Pharmacy</option>
-      <option value="Ready_To_Collect">Ready To Collect from Pharmacy</option>
-    </select>
-
-    <pre id="status_choice" style="white-space: pre-wrap;"></pre>
+  </header>
 
 
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-    <script src="app.js"></script>
+  <section>
+    <div class="psection">
+      <div class="ptitle">
+        <p>Sheets API Quickstart</p>
+      </div>
+
+      <!--Add buttons to initiate auth sequence and sign out-->
+      <button class="btn" id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+      <button class="btn " id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
+      <pre id="content" style="white-space: pre-wrap;"></pre>
+
+      <p id="patient_select_title">Patient Select</p>
+      <select class="pSelect" id="patient_select" onchange="select_Patient()">
+        <option value="">--Select--</option>
+        <option value="PID1">Arlen Voss</option>
+        <option value="PID2">Mira Calder</option>
+        <option value="PID3">Theo Renshaw</option>
+        <option value="PID4">Livia Harten</option>
+        <option value="PID5">Dorian Pike</option>
+        <option value="PID6">Elara Quinn</option>
+        <option value="PID7">Rowan Keats</option>
+        <option value="PID8">Sienna Vale</option>
+        <option value="PID9">Callum Frost</option>
+        <option value="PID10">Nyla Mercer</option>
+        <option value="PID11">Jasper Wren</option>
+        <option value="PID12">Kael Thorne</option>
+      </select>
 
 
-  </body>
+      <p id="selected_patient_title">Selected Patient:</p>
+      <pre id="patient_choice" style="white-space: pre-wrap;"></pre>
+
+      <p id="perscription_select_title">Select a Perscription:</p>
+      <select class="pSelect" id="perscription_select" onchange="select_Perscription()">
+        <option value="">---Select---</option>
+        <option value="perscription1">Perscription One</option>
+        <option value="perscription2">Perscription Two</option>
+      </select>
+
+      <pre id="perscription_choice" style="white-space: pre-wrap;"></pre>
+
+      <p id="status_select_title">Update the status of this perscription:</p>
+      <select class="pSelect" id="status_select" onchange="select_Status()">
+        <option value="">---Select---</option>
+        <option value="Created">Created</option>
+        <option value="Sent_To_Dr">Sent To Doctor</option>
+        <option value="Recieved_From_Dr">Recieved From Doctor</option>
+        <option value="Awaiting_Payment">Awaiting Payment</option>
+        <option value="Payment_Recieved">Payment Recieved</option>
+        <option value="Handed_To_Post">Handed To Postal Service</option>
+        <option value="Recieved_By_Pharmacy">Recieved By Pharmacy</option>
+        <option value="Ready_To_Collect">Ready To Collect from Pharmacy</option>
+      </select>
+
+      <pre id="status_choice" style="white-space: pre-wrap;"></pre>
+
+
+      <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+      <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+      <script src="app.js"></script>
+    </div>
+  </section>
+
+
+</body>
+
+<footer>
+  <div class="row">
+    <div class="column">
+      <img src="images/03_Artboard_3.png" alt="Calendar" class="footer_img">
+    </div>
+    <div class="column">
+      <p>© 2026 STUART. All rights reserved.</p>
+    </div>
+    <div class="column">
+      <img src="images/03_Artboard_3.png" alt="Doctor" class="footer_img">
+    </div>
+  </div>
+</footer>
+
 </html>
