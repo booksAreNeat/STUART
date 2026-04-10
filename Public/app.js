@@ -35,8 +35,8 @@ document.getElementById('signout_button').style.visibility = 'hidden';
 document.getElementById('patient_select_title').style.visibility = 'hidden';
 document.getElementById('patient_select').style.visibility = 'hidden';
 document.getElementById('selected_patient_title').style.visibility = 'hidden';
-document.getElementById('perscription_select_title').style.visibility = 'hidden';
-document.getElementById('perscription_select').style.visibility = 'hidden';
+document.getElementById('prescription_select_title').style.visibility = 'hidden';
+document.getElementById('prescription_select').style.visibility = 'hidden';
 document.getElementById('status_select_title').style.visibility = 'hidden';
 document.getElementById('status_select').style.visibility = "hidden";
 
@@ -153,7 +153,7 @@ document.getElementById('patient_select_title').style.visibility = 'visible';
 document.getElementById('patient_select').style.visibility = 'visible';
 
 
-//much nicer way of choosing patient, perscription and status
+//much nicer way of choosing patient, prescription and status
 
 //first heres the maps 
 //map of patient sheets
@@ -172,10 +172,10 @@ const patient_Map = {
     PID12:  'Kael Thorne'
 };
 
-//map of perscription cells 
+//map of prescription cells 
 const prescription_Map = {
-    perscription1:  'C2:G2',
-    perscription2:  'C3:G3'
+    prescription1:  'C2:G2',
+    prescription2:  'C3:G3'
 };
 
 //reusable function that can read data from google sheets within the specified range. 
@@ -225,26 +225,26 @@ async function select_Patient() {
         document.getElementById('patient_choice').innerText = `Unexpected error: ${err.message}`;
     }
     
-    //make the perscription dropdown visible
-    document.getElementById('perscription_select_title').style.visibility = 'visible';
-    document.getElementById('perscription_select').style.visibility = 'visible';
+    //make the prescription dropdown visible
+    document.getElementById('prescription_select_title').style.visibility = 'visible';
+    document.getElementById('prescription_select').style.visibility = 'visible';
 } 
 
-//method to choose a perscription and display it 
-async function select_Perscription() {
+//method to choose a prescription and display it 
+async function select_Prescription() {
     const selected_Patient = document.getElementById("patient_select").value;
     const sheet_Name = patient_Map[selected_Patient];
 
-    const selected_Prescription = document.getElementById("perscription_select").value;
+    const selected_Prescription = document.getElementById("prescription_select").value;
     const range = prescription_Map[selected_Prescription];
 
     if (!sheet_Name || !range) return;
 
-    // Load the perscription using the read sheets method
+    // Load the prescription using the read sheets method
     const output = await read_From_Sheets(`${sheet_Name}!${range}`);
 
-    document.getElementById('perscription_choice').style.visibility = 'visible';
-    document.getElementById('perscription_choice').innerText = output;
+    document.getElementById('prescription_choice').style.visibility = 'visible';
+    document.getElementById('prescription_choice').innerText = output;
 
     // make the select status dropdown visible
     document.getElementById('status_select_title').style.visibility = 'visible';
@@ -252,7 +252,7 @@ async function select_Perscription() {
 }
 
 
-//finction to update the status of a perscription
+//finction to update the status of a prescription
 async function select_Status() {
     if (!gapiInited) await initializeGapiClient();
 
@@ -264,7 +264,7 @@ async function select_Status() {
 
     const selected_Patient = document.getElementById("patient_select").value;
     const sheet_Name = patient_Map[selected_Patient];
-    const selected_Prescription = document.getElementById("perscription_select").value;
+    const selected_Prescription = document.getElementById("prescription_select").value;
     const range = prescription_Map[selected_Prescription];
     const selected_Status = document.getElementById("status_select").value;
 
@@ -273,8 +273,8 @@ async function select_Status() {
 
     // Determine the row for the prescription
     const match = range.match(/C(\d+)/);
-    const perscription_Row = match ? match[1] : null;
-    const status_Cell = `F${perscription_Row}`;
+    const prescription_Row = match ? match[1] : null;
+    const status_Cell = `F${prescription_Row}`;
     const new_Status = [[selected_Status]];
 
     try {
@@ -287,11 +287,11 @@ async function select_Status() {
             },
         });
 
-        // reload the perscription using the read sheets method
+        // reload the prescription using the read sheets method
         const patient_output = await read_From_Sheets(`${sheet_Name}!A1:Z`)
-        const perscription_output = await read_From_Sheets(`${sheet_Name}!${range}`);
-        document.getElementById('status_choice').innerText = perscription_output;
-        document.getElementById('perscription_choice').innerText = perscription_output;
+        const prescription_output = await read_From_Sheets(`${sheet_Name}!${range}`);
+        document.getElementById('status_choice').innerText = prescription_output;
+        document.getElementById('prescription_choice').innerText = prescription_output;
         document.getElementById('patient_choice').innerText = patient_output;
 
     } catch (err) {
