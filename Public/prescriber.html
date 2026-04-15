@@ -4,21 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <title>STUART - Prescription Tracking Made Easy</title>
-  <link rel="stylesheet" href="Style/ButtonsTest.css">
+  <link rel="stylesheet" href="Style/prescribe.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body class = "prescribeBody">
   <header>
-    <div class="row">
-      <div class="column">
+    <div class="rowTitle">
+      <div class="columnTitle">
         <img src="images/01_Artboard_1.png" alt="Stethoscope" class="header_img">
       </div>
-      <div class="pColumn">
+      <div class="pCcolumn">
         <img src="images/S.T.U.A.R.T_LOGO.png" alt="STUART Logo" class="logo">
         <p>Welcome to the prescribers hub.</p>
         <!-- Placeholder logout button - replace with actual logout functionality when backend is added -->
         <button onclick="window.location.href='index.html'" class="btn">Logout</button>
+      </div>
+      <div class="pColumn">
         <img src="images/04_Artboard_4.png" alt="Phone" class="header_img">
       </div>
     </div>
@@ -29,7 +31,7 @@
 
 
   <section>
-    <div class="prescriber_section">
+    <div class="psection">
       <div class="ptitle">
         <p>Prescriptions Database</p>
       </div>
@@ -81,6 +83,7 @@
         <option value="Handed_To_Post">Handed To Postal Service</option>
         <option value="Recieved_By_Pharmacy">Recieved By Pharmacy</option>
         <option value="Ready_To_Collect">Ready To Collect from Pharmacy</option>
+        <option value="Collected">Collected</option>
       </select>
 
       <pre id="status_choice" style="white-space: pre-wrap;"></pre>
@@ -92,21 +95,6 @@
     </div>
   </section>
 
-
+</section>
 </body>
-
-<footer>
-  <div class="row">
-    <div class="column">
-      <img src="images/03_Artboard_3.png" alt="Calendar" class="footer_img">
-    </div>
-    <div class="column">
-      <p>© 2026 STUART. All rights reserved.</p>
-    </div>
-    <div class="column">
-      <img src="images/03_Artboard_3.png" alt="Doctor" class="footer_img">
-    </div>
-  </div>
-</footer>
-
 </html>
