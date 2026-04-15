@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>STUART - Prescription Tracking Made Easy</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header>
+    <div class="row">
+      <div class="column side">
+        <img src="images/01_Artboard_1.png" alt="Stethoscope" class="header_img">
+      </div>
+  
+      <div class="column middle">
+        <img src="images/S.T.U.A.R.T_LOGO.png" alt="STUART Logo" class="logo">
+        <p>Welcome to the patient hub.</p>
+  
+        <div class="button-group">
+          <button onclick="window.location.href='patient.html'" class="btn">Patient</button>
+          <button onclick="window.location.href='prescribe.html'" class="btn">Professional</button>
+          <button id="loginButton" class="btn" onclick="showLogin()">Login</button>
+        </div>
+
+        <!-- Hidden login form -->
+        <div id="loginForm">
+          <h3>Login</h3>
+
+          <label>Name:</label>
+          <input type="text" id="nameInput"><br><br>
+
+          <label>ID:</label>
+          <input type="text" id="idInput"><br><br>
+
+          <button onclick="login()" class="btn">Submit</button>
+
+          <p id="status"></p>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </header>
+
+  <section>
+    <h2>Why Choose STUART?</h2>
+    <div class="features">
+      <div class="card">
+        <h3>📅 Smart Reminders</h3>
+        <p>STUART will notify you exactly when it's time to pick up your prescription.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Apply for repeat prescriptions online</h3>
+        <p>STUART lets you apply for repeat prescriptions from the comfort of your home.</p>
+      </div>
+      <div class="card">
+        <h3>🔒 Secure & Private</h3>
+        <p>Your health data is encrypted and protected at all times.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How It Works</h2>
+    <div class="features">
+      <div class="card">
+        <h3>1. Sign up</h3>
+        <p>Create an account and link your prescription information, via your doctor's practice.</p>
+      </div>
+      <div class="card">
+        <h3>2. Apply for Repeat Prescriptions</h3>
+        <p>Submit applications for repeat prescriptions online at your convenience.</p>
+      </div>
+      <div class="card">
+        <h3>3. Stay on Track</h3>
+        <p>Receive alerts when your prescriptions are ready for pickup.</p>
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <section>
+    <div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+
+        <div class="slide-card">
+          <img src="images/carousel-1.jpg" alt="Doctor">
+          <div class="caption-box">
+            <h3>From your doctor</h3>
+            <p>Your prescription begins with your GP or medical professional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+
+        <div class="slide-card">
+          <img src="images/carousel-2.jpg" alt="Pharmacy">
+          <div class="caption-box">
+            <h3>To the pharmacy</h3>
+            <p>Your prescription is sent through for preparation and collection.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+
+        <div class="slide-card">
+          <img src="images/carousel-3.jpg" alt="Patient">
+          <div class="caption-box">
+            <h3>To you</h3>
+            <p>Collect your prescription quickly and keep track of your medication.</p>
+          </div>
+        </div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row">
+      <div class="column">
+        <img src="images/03_Artboard_3.png" alt="Calendar" class="footer_img">
+      </div>
+      <div class="column">
+        <h2>Start Managing Your Health Today</h2>
+        <p>Join thousands of users improving their medication routine.</p>
+        <p>© 2026 STUART. All rights reserved.</p>
+      </div>
+      <div class="column">
+        <img src="images/03_Artboard_3.png" alt="Doctor" class="footer_img">
+      </div>
+    </div>
+  </footer>
